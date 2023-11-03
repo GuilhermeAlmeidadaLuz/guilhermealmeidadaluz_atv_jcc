@@ -1,0 +1,16 @@
+-- Porta Or
+
+LIBRARY IEEE;
+USE ieee.std_logic_1164.all;
+
+ENTITY MyOR IS
+	PORT(
+			r0_input, r1_input: IN std_logic;
+			r_output: OUT std_logic
+			);
+END MyOR;
+
+ARCHITECTURE way OF MyOR IS
+BEGIN
+	r_output <= r0_input or r1_input;
+END Way;
