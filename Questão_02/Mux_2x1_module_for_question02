@@ -1,0 +1,19 @@
+-- Mux 2x1
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.all;
+
+ENTITY Mux_2x1 IS
+	PORT(
+			D0, D1, S0: IN BIT;
+			O : OUT BIT
+			);
+	
+END Mux_2x1;
+
+ARCHITECTURE waylogic OF Mux_2x1 IS
+
+BEGIN
+
+	O <= (D0 AND S0) OR (D1 AND NOT(S0));
+
+END waylogic;
