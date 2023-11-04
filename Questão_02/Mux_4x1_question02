@@ -1,0 +1,39 @@
+-- Mux 4x1
+
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.all;
+
+--Entidade
+ENTITY Mux_4X1 IS
+	PORT(
+			A, B, C, D, S0, S1: IN BIT; -- entradas
+			Z: OUT BIT -- saída
+			);
+			
+END Mux_4X1;
+
+--Arquitetura
+ARCHITECTURE walking OF Mux_4x1 IS
+
+	SIGNAL out_1, out_2: BIT;
+	
+	COMPONENT Mux_2x1 PORT(D0, D1, S0: IN BIT;
+											 O : OUT BIT); END COMPONENT;
+	
+	BEGIN
+	M2x1_1: Mux_2x1 PORT MAP(D0 => A,
+									 D1 => B,
+									 S0 => S0,
+									  O => out_1);
+	
+	M2x1_2: Mux_2x1 PORT MAP(D0 => C,
+									 D1 => D,
+									 S0 => S0,
+									  O => out_2);
+	
+	M2x1_3: Mux_2x1 PORT MAP(D0 => out_1,
+									 D1 => out_2,
+									 S0 => S1,
+									  O => Z);
+
+END walking;
